@@ -1,10 +1,11 @@
 const inquirer = require('inquirer');
 const jest = require('jest');
 const fs = require('fs');
-// const employee = require('Employee');
-// const manager = require('Manager');
-// const engineer = require('Engineer');
-// const intern = require('Intern')
+const generateHTML = require('./src/template')
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern')
 
 
 const confirmInput = (input) => {
@@ -47,11 +48,13 @@ const createTeam = (input) => {
         },
     ])
     .then((input) => {
+        const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
         if (input.newEmployee == 'Engineer') {
             createEngineer(input)
         } else if (input.newEmployee == 'Intern') {
             createIntern(input)
-        } else if (input.newEmployee == 'No additonal employees') {
+        } else if (input.newEmployee == 'No additional employees') {
+            console.log(input);
             generateHTML(input)
         }
     })
@@ -96,6 +99,7 @@ function createEngineer (input) {
         } else if (input.newEmployee == 'Intern') {
             createIntern(input)
         } else if (input.newEmployee == 'No additonal employees') {
+            console.log(response);
             generateHTML(input)
         }
     })
@@ -140,6 +144,7 @@ function createIntern (input) {
         } else if (input.newEmployee == 'Intern') {
             createIntern(input)
         } else if (input.newEmployee == 'No additonal employees') {
+            console.log(response);
             generateHTML(input)
         }
     })
