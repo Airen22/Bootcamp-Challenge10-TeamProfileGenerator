@@ -1,13 +1,4 @@
-const fs = require('fs');
-const Manager = require('../lib/Manager');
-// const employee = require('./lib/');
-// const manager = require('./lib/Manager');
-// const engineer = require('./lib/Engineer');
-// const intern = require('./lib/Intern');
 
-
-function generateHTML (input) {
-    var html = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -33,40 +24,40 @@ function generateHTML (input) {
                 <div class="row team-area col-12 d-flex justify-content-center">
     <div class="card manager-card employee-card">
         <div class="card-header bg-primary text-white">
-            <h2 class="card-title" id="manager">${input.managerName}</h2>
+            <h2 class="card-title" id="manager">undefined</h2>
             <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: ${input.managerId}</li>
-                <li class="list-group-item">Email: <a href="mailto:bigboss@gmail.com">${input.managerEmail}</a></li>
-                <li class="list-group-item">Office number: ${input.managerOfficeNumber}</li>
+                <li class="list-group-item">ID: undefined</li>
+                <li class="list-group-item">Email: <a href="mailto:bigboss@gmail.com">undefined</a></li>
+                <li class="list-group-item">Office number: undefined</li>
             </ul>
         </div>
     </div>
         <div class="card engineer-card employee-card">
         <div class="card-header bg-primary text-white">
-            <h2 class="card-title">${this.getName}</h2>
-            <h3 class="card-title" id="engineer"><i class="fas fa-user-graduate mr-2"></i>${this.getRole}</h3>
+            <h2 class="card-title">undefined</h2>
+            <h3 class="card-title" id="engineer"><i class="fas fa-user-graduate mr-2"></i>undefined</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: ${this.getId}</li>
-                <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">${this.getEmail}</a></li>
-                <li class="list-group-item">GitHub: ${this.getGithub}<a href="https://github.com/${this.getGithub}" target="_blank"></a></li>
+                <li class="list-group-item">ID: undefined</li>
+                <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">undefined</a></li>
+                <li class="list-group-item">GitHub: undefined<a href="https://github.com/undefined" target="_blank"></a></li>
             </ul>
         </div>
     </div>
     <div class="card intern-card employee-card">
       <div class="card-header bg-primary text-white">
-          <h2 class="card-title">${this.getName}</h2>
-          <h3 class="card-title" id="intern"><i class="fas fa-user-graduate mr-2"></i>${this.getRole}</h3>
+          <h2 class="card-title">undefined</h2>
+          <h3 class="card-title" id="intern"><i class="fas fa-user-graduate mr-2"></i>undefined</h3>
       </div>
       <div class="card-body">
           <ul class="list-group">
-              <li class="list-group-item">ID: ${this.getID}</li>
-              <li class="list-group-item">Email: <a href="mailto:${this.getEmail}">${this.getEmail}</a></li>
-              <li class="list-group-item">School: ${this.getSchool}</li>
+              <li class="list-group-item">ID: undefined</li>
+              <li class="list-group-item">Email: <a href="mailto:undefined">undefined</a></li>
+              <li class="list-group-item">School: undefined</li>
           </ul>
       </div>
     </div>
@@ -79,11 +70,4 @@ function generateHTML (input) {
         crossorigin="anonymous">
         </script>
     </body>
-    </html>`
-
-
-    fs.writeFileSync('./dist/index.html', html, (err) =>
-    err ? console.error(err) : console.log('Success!'))
-}
-
-module.exports = generateHTML;
+    </html>
