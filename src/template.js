@@ -1,15 +1,15 @@
 const fs = require('fs');
+const Employee = require('../lib/Employee');
 const Manager = require('../lib/Manager');
-// const employee = require('./lib/');
-// const manager = require('./lib/Manager');
-// const engineer = require('./lib/Engineer');
-// const intern = require('./lib/Intern');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
 
 
-function generateHTML (input) {
-    var html = `
-    <!DOCTYPE html>
+function generateHTML (teamArr) {
+    var html = 
+    `<!DOCTYPE html>
     <html lang="en">
+    
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +20,7 @@ function generateHTML (input) {
         <link rel="stylesheet" href="./style.css">
         <script src="https://kit.fontawesome.com/c502137733.js"></script>
     </head>
+    
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -31,55 +32,30 @@ function generateHTML (input) {
         <div class="container">
             <div class="row">
                 <div class="row team-area col-12 d-flex justify-content-center">
-    <div class="card manager-card employee-card">
-        <div class="card-header bg-primary text-white">
-            <h2 class="card-title" id="manager">${input.managerName}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
-        </div>
-        <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item">ID: ${input.managerId}</li>
-                <li class="list-group-item">Email: <a href="mailto:bigboss@gmail.com">${input.managerEmail}</a></li>
-                <li class="list-group-item">Office number: ${input.managerOfficeNumber}</li>
-            </ul>
-        </div>
-    </div>
-        <div class="card engineer-card employee-card">
-        <div class="card-header bg-primary text-white">
-            <h2 class="card-title">${this.getName}</h2>
-            <h3 class="card-title" id="engineer"><i class="fas fa-user-graduate mr-2"></i>${this.getRole}</h3>
-        </div>
-        <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item">ID: ${this.getId}</li>
-                <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">${this.getEmail}</a></li>
-                <li class="list-group-item">GitHub: ${this.getGithub}<a href="https://github.com/${this.getGithub}" target="_blank"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="card intern-card employee-card">
-      <div class="card-header bg-primary text-white">
-          <h2 class="card-title">${this.getName}</h2>
-          <h3 class="card-title" id="intern"><i class="fas fa-user-graduate mr-2"></i>${this.getRole}</h3>
-      </div>
-      <div class="card-body">
-          <ul class="list-group">
-              <li class="list-group-item">ID: ${this.getID}</li>
-              <li class="list-group-item">Email: <a href="mailto:${this.getEmail}">${this.getEmail}</a></li>
-              <li class="list-group-item">School: ${this.getSchool}</li>
-          </ul>
-      </div>
-    </div>
+                    <div class="card manager-card employee-card">
+                        <div class="card-header bg-primary text-white">
+                            <h2 class="card-title" id="manager">${teamArr[0].getName()}</h2>
+                            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${teamArr[0].getRole()}</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${teamArr[0].getId()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:bigboss@gmail.com">${teamArr[0].getEmail()}</a></li>
+                                <li class="list-group-item">Office number: ${teamArr[0].getOfficeNumber()}</li>
+                            </ul>
+                        </div>
+                    </div>
+ 
                 </div>
             </div>
         </div>
-        <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous">
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
     </body>
-    </html>`
+    
+    </html>
+    `
 
 
     fs.writeFileSync('./dist/index.html', html, (err) =>
@@ -87,3 +63,30 @@ function generateHTML (input) {
 }
 
 module.exports = generateHTML;
+                    // <div class="card engineer-card employee-card">
+                    //     <div class="card-header bg-primary text-white">
+                    //         <h2 class="card-title">${getName}</h2>
+                    //         <h3 class="card-title" id="engineer"><i class="fas fa-user-graduate mr-2"></i>${getRole}</h3>
+                    //     </div>
+                    //     <div class="card-body">
+                    //         <ul class="list-group">
+                    //             <li class="list-group-item">ID: ${getID}</li>
+                    //             <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">${getEmail}</a></li>
+                    //             <li class="list-group-item">GitHub: ${getGithub}<a href="https://github.com/${getGithub}"
+                    //                     target="_blank"></a></li>
+                    //         </ul>
+                    //     </div>
+                    // </div>
+                    // <div class="card intern-card employee-card">
+                    //     <div class="card-header bg-primary text-white">
+                    //         <h2 class="card-title">${getName}</h2>
+                    //         <h3 class="card-title" id="intern"><i class="fas fa-user-graduate mr-2"></i>${getRole}</h3>
+                    //     </div>
+                    //     <div class="card-body">
+                    //         <ul class="list-group">
+                    //             <li class="list-group-item">ID: ${getID}</li>
+                    //             <li class="list-group-item">Email: <a href="mailto:${getEmail}">${getEmail}</a></li>
+                    //             <li class="list-group-item">School: ${getSchool}</li>
+                    //         </ul>
+                    //     </div>
+                    // </div>

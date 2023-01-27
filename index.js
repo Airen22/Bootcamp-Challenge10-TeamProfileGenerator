@@ -7,10 +7,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const teamArr = [];
-const newRole = "";
-const newName = "";
-const newId = "";
-const newEmail = "";
+
 const confirmInput = (input) => {
     if (input == "") {
         return `Did you mean to leave this blank? Please enter N/A if there is no content for this section.`
@@ -59,15 +56,6 @@ const createTeam = () => {
             createIntern(newName, newId, newEmail, newRole)
         }
         
-        
-        // (input.newEmployee == 'No additional employees') {
-        //     console.log(input);
-        //     generateHTML(input)
-        // }
-    
-
-
-
 function createManager (newName, newId, newEmail) {
     inquirer.prompt([
         {
@@ -88,7 +76,7 @@ function createManager (newName, newId, newEmail) {
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
             console.log(teamArr)
-            // generateHTML(input)
+            generateHTML(teamArr)
         } else {
             createTeam();
         }
@@ -114,7 +102,7 @@ function createEngineer (newName, newId, newEmail) {
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
             console.log(teamArr)
-            // generateHTML(input)
+            generateHTML(teamArr)
         } else {
             createTeam();
         }
@@ -141,7 +129,7 @@ function createIntern (newName, newId, newEmail) {
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
             console.log(teamArr)
-            // generateHTML(input)
+            generateHTML(teamArr)
         } else {
             createTeam();
         }
@@ -151,14 +139,3 @@ function createIntern (newName, newId, newEmail) {
 })
 }
 createTeam()
-// const generateManager = ({}) =>
-// `HTML manager container`;
-
-// const generateEngineer = ({}) =>
-// `HTML engineer contaner`;
-
-// const generateIntern = ({}) =>
-// `HTML intern container`;
-
-// const generateHTML = ({}) =>
-// `HTML base frame with ${generateManager}, ${Engineer}, ${Intern}
