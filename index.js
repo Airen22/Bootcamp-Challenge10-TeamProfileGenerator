@@ -75,7 +75,7 @@ function createManager (newName, newId, newEmail) {
     const newMember = new Manager(newName, newId, newEmail, input.officeNumber)
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
-            console.log(teamArr)
+            // console.log(teamArr)
             generateHTML(teamArr)
         } else {
             createTeam();
@@ -101,7 +101,7 @@ function createEngineer (newName, newId, newEmail) {
     const newMember = new Engineer(newName, newId, newEmail, input.github)
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
-            console.log(teamArr)
+            // console.log(teamArr)
             generateHTML(teamArr)
         } else {
             createTeam();
@@ -128,7 +128,7 @@ function createIntern (newName, newId, newEmail) {
     const newMember = new Intern(newName, newId, newEmail, input.school)
     teamArr.push(newMember)
         if (input.newEmployee == 'No') {
-            console.log(teamArr)
+            // console.log(teamArr)
             generateHTML(teamArr)
         } else {
             createTeam();
