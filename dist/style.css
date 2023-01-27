@@ -5,6 +5,7 @@
     box-shadow: 5px 5px 5px gray;
     margin: 1rem;
     border: none;
+    width: 15rem;
 }
 .card-body {
     background-color: rgb(240, 240, 240);

@@ -3,12 +3,10 @@ const Employee = require('../lib/Employee');
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
+let internCard = ""
 
-
-
-function generateHTML (teamArr) {
-    console.log("TEST" + teamArr);
-    var html = 
+function generateHTML(teamArr) {
+    let html = 
     `<!DOCTYPE html>
     <html lang="en">
     
@@ -35,7 +33,6 @@ function generateHTML (teamArr) {
             <div class="row">
                 <div class="row team-area col-12 d-flex justify-content-center">
                     ${createCards(teamArr)}
- 
                 </div>
             </div>
         </div>
@@ -44,72 +41,67 @@ function generateHTML (teamArr) {
             </script>
     </body>
     
-    </html>
-    `
+    </html>`
 
-
-    // fs.writeFileSync('./dist/index.html', html, (err) =>
-    // err ? console.error(err) : console.log('Success!'))
-function createCards(teamArr) {
-        for (let i = 0; i < teamArr.length; i++) {
-        let icon = getIcon()
-        let card = 
-        `                    <div class="card manager-card employee-card">
+    function createCards (teamArr){
+    let cards = "";
+    for (var i = 0; i < teamArr.length; i++) {
+        if (teamArr[i].getRole() === "Manager") {
+            cards +=
+                `   <div class="card manager-card employee-card">
                         <div class="card-header bg-primary text-white">
                             <h2 class="card-title" id="manager">${teamArr[i].getName()}</h2>
-                            <h3 class="card-title"><i class="fas ${icon} mr-2"></i>${teamArr[i].getRole()}</h3>
+                            <h3 class="card-title"><i class="fas fa-sitemap mr-2"></i>${teamArr[i].getRole()}</h3>
                         </div>
                         <div class="card-body">
                             <ul class="list-group">
                                 <li class="list-group-item">ID: ${teamArr[i].getId()}</li>
-                                <li class="list-group-item">Email: <a href="mailto:bigboss@gmail.com">${teamArr[i].getEmail()}</a></li>
+                                <li class="list-group-item">Email: <a href="mailto:manager@gmail.com">${teamArr[i].getEmail()}</a></li>
                                 <li class="list-group-item">Office number: ${teamArr[i].getOfficeNumber()}</li>
                             </ul>
                         </div>
                     </div>`;
-                console.log(card)
-            }
+        } else if (teamArr[i].getRole() === "Engineer") {
+            cards +=
+                `   <div class="card engineer-card employee-card">
+                         <div class="card-header bg-primary text-white">
+                            <h2 class="card-title">${teamArr[i].getName()}</h2>
+                            <h3 class="card-title" id="engineer"><i class="fas fa-wrench mr-2"></i>${teamArr[i].getRole()}</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${teamArr[i].getId()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">${teamArr[i].getEmail()}</a></li>
+                                <li class="list-group-item">GitHub: <a href="https://github.com/${teamArr[i].getGithub()}" target="_blank">${teamArr[i].getGithub()}</a></li>
+                            </ul>
+                        </div>
+                    </div>`;
+        }  else if (teamArr[i].getRole() === "Intern") {
+            cards +=
+                `   <div class="card intern-card employee-card">
+                        <div class="card-header bg-primary text-white">
+                            <h2 class="card-title">${teamArr[i].getName()}</h2>
+                            <h3 class="card-title" id="intern"><i class="fas fa-graduation-cap mr-2"></i>${teamArr[i].getRole()}</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${teamArr[i].getId()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:intern@gmail.com">${teamArr[i].getEmail()}</a></li>
+                                <li class="list-group-item">School: ${teamArr[i].getSchool()}</li>
+                            </ul>
+                        </div>
+                    </div>`;
+        }
 
+} return cards;
 }
+       
+    fs.writeFileSync('./dist/index.html', html, (err) =>
+    err ? console.error(err) : console.log('HTML created!'))
+    }
+    // function generateCards(teamArr){
+    // console.log(teamArr);}
+    // ;
+// generateCards(teamArr, managerCard, engineerCard, internCard)
 
-function getIcon (teamArr) {
-    for (let i = 0; i < teamArr.length; i++) {
-    if(`${teamArr[i].getRole()}` === "Manger") {
-       let icon = "fa-sitemap";
-    } else if (`${teamArr[i].getRole()}` === "Engineer") {
-       let icon = "fa-wrench";
-    } else if (`${teamArr[i].getRole()}` === "Intern") {
-       let icon = "fa-graduation-cap";
-    }
-    }
-}}
 module.exports = generateHTML;
-
-
-                    // <div class="card engineer-card employee-card">
-                    //     <div class="card-header bg-primary text-white">
-                    //         <h2 class="card-title">${getName}</h2>
-                    //         <h3 class="card-title" id="engineer"><i class="fas fa-user-graduate mr-2"></i>${getRole}</h3>
-                    //     </div>
-                    //     <div class="card-body">
-                    //         <ul class="list-group">
-                    //             <li class="list-group-item">ID: ${getID}</li>
-                    //             <li class="list-group-item">Email: <a href="mailto:engineer@gmail.com">${getEmail}</a></li>
-                    //             <li class="list-group-item">GitHub: ${getGithub}<a href="https://github.com/${getGithub}"
-                    //                     target="_blank"></a></li>
-                    //         </ul>
-                    //     </div>
-                    // </div>
-                    // <div class="card intern-card employee-card">
-                    //     <div class="card-header bg-primary text-white">
-                    //         <h2 class="card-title">${getName}</h2>
-                    //         <h3 class="card-title" id="intern"><i class="fas fa-user-graduate mr-2"></i>${getRole}</h3>
-                    //     </div>
-                    //     <div class="card-body">
-                    //         <ul class="list-group">
-                    //             <li class="list-group-item">ID: ${getID}</li>
-                    //             <li class="list-group-item">Email: <a href="mailto:${getEmail}">${getEmail}</a></li>
-                    //             <li class="list-group-item">School: ${getSchool}</li>
-                    //         </ul>
-                    //     </div>
-                    // </div>
