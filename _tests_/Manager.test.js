@@ -1,15 +1,13 @@
 const Employee = require('../lib/Employee');
 const Manager = require('../lib/Manager');
 
-test('Check for manager office number', () => {
-    const office = 1
-    const newManager = new Manager("name", "id", "email", office)
+test('Check that new Manager() construct gets created with given school parameter', () => {
+  const newManager = new Manager("James", 2341, "james@mail.com", "Office")
 
-  expect(newManager.officeNumber).toEqual(expect.any(Number))
-  expect(newManager.getOfficeNumber()).toBe(office)  
+  expect(newManager.getOfficeNumber()).toBe("Office")  
 })
-
-test('Check for manager role', () => {
-    const newManager = new Manager("name", "id", "email", "office")
-    expect(newManager.getRole()).toBe("Manager")  
+test('Check that getRole() returns "Intern"', () => {
+  const newManager = new Manager("James", 2341, "james@mail.com", "Office")
+  
+  expect(newManager.getRole()).toBe("Manager")  
 })

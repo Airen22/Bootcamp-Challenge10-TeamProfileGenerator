@@ -1,14 +1,13 @@
 const Employee = require('../lib/Employee');
 const Intern = require('../lib/Intern');
 
-test('Check for intern school', () => {
-    const school = "school"
-    const newIntern = new Intern("name", "id", "email", school)
+test('Check that new Intern() construct gets created with given school parameter', () => {
+  const newIntern = new Intern("James", 2341, "james@mail.com", "School")
 
-  expect(newIntern.school).toEqual(expect.any(String))
-  expect(newIntern.getSchool()).toBe(school)  
+  expect(newIntern.getSchool()).toBe("School")  
 })
-test('Check for manager role', () => {
-    const newIntern = new Intern("name", "id", "email", "school")
-    expect(newIntern.getRole()).toBe("Intern")  
+test('Check that getRole() returns "Intern"', () => {
+  const newIntern = new Intern("James", 2341, "james@mail.com", "School")
+  
+  expect(newIntern.getRole()).toBe("Intern")  
 })
